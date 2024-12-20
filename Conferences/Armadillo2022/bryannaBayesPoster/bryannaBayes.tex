@@ -1,0 +1,226 @@
+% ----------------------------------------------------------------------
+% Poster for Bryanna 2022 -- SWPA, Pathways, and more! 
+% ---------------------------------------------------------------------
+
+\documentclass[paperheight=36in,paperwidth=48in,landscape]{baposter}
+\usepackage{amsmath}
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+\usepackage{relsize}  % For \smaller
+\usepackage{url}      % For \url
+\usepackage{tikz}
+\usepackage{xcolor}
+\usetikzlibrary{shapes.misc}
+
+%\usepackage{sansmathfonts}
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
+%%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{figures/}}  % Root directory of the pictures 
+% \tracingstats=2  % Enabled LaTeX logging with conditionals
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bordercol}{RGB}{40,40,40}
+\definecolor{tarletonPurple}{RGB}{79,45,127}
+\definecolor{headerfontcol}{RGB}{0,0,0}
+\definecolor{boxcolor}{RGB}{255,255,255}
+\definecolor{backgroundcolor}{RGB}{229,224,236}
+% background color is computed by extending each RGB component of tarletonPurple
+% toward white (255,255,255) in a proportional manner. This specific choice
+% is 85% of the way toward white.  This way, it is not too dark, but still
+% retains some of the visual appeal of Tarleton purple
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Save space in lists. Use this after the opening of the list
+\newcommand{\compresslist}{
+	\setlength{\itemsep}{0.2pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Document Start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%
+\begin{poster}{
+        headerheight=0.1\textheight,
+	grid=false,
+        columns=3,
+    	eyecatcher=true, 
+	borderColor=bordercol,
+	headerColorOne=tarletonPurple,
+        headershade=plain,
+	headerFontColor=boxcolor,
+	% Only simple background color used, no shading, so boxColorTwo
+        % isn't necessary
+	boxColorOne=boxcolor,
+	headershape=smallrounded,
+	headerfont=\Large\sf\bf,
+	textborder=roundedsmall,
+	background=plain,
+        bgColorOne=backgroundcolor,
+        headerborder=closed,
+        boxshade=plain
+}
+%%% Eye Catcher %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	
+}
+%%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\LARGE\bf
+  Cognitive processes in mental arithmetic: A confirmatory Bayesian analysis
+}
+%%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+  { Bryanna L. Scheuler \& Thomas J. Faulkenberry}\\
+  { Department of Psychological Sciences, Tarleton State University}\\
+}
+%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+ \includegraphics[height=0.8\headerheight]{figures/logo.jpg} 
+}
+
+\headerbox{Problem}{name=problem,span=1,column=0,row=0}{ 
+
+  Mental arithmetic occurs in three stages (Ashcraft, 1992):
+  
+  \begin{enumerate} \compresslist
+  \item Encoding
+  \item Calculation
+  \item Production
+  \end{enumerate}
+
+  Researchers commonly use response times (RTs) to study these mental arithmetic stages and the situations that can impact the underlying cognitive processes. For example, an increase in RTs due to manipulation of format illustrates functioning of the encoding stage. Similarly, an increase in RTs due to manipulation of problem difficulty (e.g., the problem size effect) illustrates functioning of the calculation stage.
+
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{figures/additive.pdf}
+  \end{center}
+
+  While researchers agree to the division of mental arithmetic into these stages, there is significant debate as to whether encoding and calculation are independent. For example, {\color{blue} while a manipulation of problem format affects encoding, does it also directly affect calculation processes?}
+
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{figures/interactive.pdf}
+  \end{center}
+}
+
+\headerbox{Competing models}{name=competing, span=1, below=problem, above=bottom}{
+
+ Model 1 (e.g., Dehaene \& Cohen, 1995):
+  \begin{itemize} \compresslist
+  \item Stages are independent, so a manipulation of encoding will not cause changes to the calculation stage.
+  \item Statistical model is {\color{blue} additive}:
+
+    \[
+      \mathcal{M}_1: \text{RT} \sim \text{format} + \text{size}
+    \]
+   \end{itemize}
+
+    Model 2 (e.g., Campbell \& Fugelsang, 2001):
+  \begin{itemize} \compresslist
+  \item Stages are not independent, so a manipulation of encoding will directly impact calculation processes.
+  \item Statistical model is {\color{blue} interactive}:
+
+    \[
+      \mathcal{M}_2: \text{RT} \sim \text{format} + \text{size} + {\color{red}\text{format}\cdot\text{size}}
+    \]
+    \end{itemize}
+
+ }
+
+\headerbox{Experiment design}{name=design, span=1,column=1}{
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{figures/trialDesign.pdf}
+    \end{center}
+}
+
+\headerbox{Bayesian inference}{name=bayes, span=1,column=1, below=design}{
+
+  For inference, we use Bayesian statistics (Faulkenberry, Ly, \& Wagenmakers, 2020), which allows us to mathematically quantify the extent to which the observed data updates the relative evidence in favor of one model over another.
+
+\begin{enumerate} 
+  \item Specifically, we can can evaluate which model is best predicted by our observed data using the {\color{blue}Bayes factor}:
+  
+    \[
+      \text{BF}_{12} = \frac{P(\text{data} \mid \mathcal{M}_1)}{P(\text{data} \mid \mathcal{M}_2)}
+  \]
+
+
+  \item Example: suppose $\text{BF}_{12} = 10$. This means that the observed data are 10 times more likely under $\mathcal{M}_1$ than under $\mathcal{M}_2$.
+
+\item To compute Bayes factors, we use methods of Rouder et al. (2012) implemented in the software package JASP (https://jasp-stats.org)
+\end{enumerate}
+}
+
+\headerbox{Results - true problems}{name=results1, span=1, column=1, below=bayes, above=bottom}{
+
+  For true problems, data more likely under {\color{blue}Model 2 (interactive model)}
+
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{figures/true.pdf}
+  \end{center}
+
+  \begin{itemize} \compresslist
+  \item $\text{BF}_{21} = 18.77$ -- observed data 18.77 times more likely under $\mathcal{M}_2$ (interactive model) than under $\mathcal{M}_1$ (additive model)
+  \item posterior probability of winning model: $P(\mathcal{M}_2 \mid \text{data}) = 0.949$
+  \end{itemize}
+}
+
+\headerbox{Results - false problems}{name=results2, span=1, column=2}{
+
+ For false problems, data more likely under {\color{blue}Model 1 (additive model)}
+
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{figures/false.pdf}
+  \end{center}
+
+  \begin{itemize} \compresslist
+  \item $\text{BF}_{12} = 7.56$ -- observed data 7.56 times more likely under $\mathcal{M}_1$ (additive model) than under $\mathcal{M}_2$ (interactive model)
+    \item posterior probability of winning model: $P(\mathcal{M}_1 \mid \text{data}) = 0.883$
+  \end{itemize}
+}
+
+
+
+\headerbox{Discussion}{name=discussion, span=1, column=2, below=results2}{
+
+    \begin{itemize}
+     \item For true problems, the interactive model was preferred.
+     \item For false problems, the additive model was preferred
+     \item Why is there a difference in preferred models between true and false problems? 
+       \begin{itemize}
+         \item Extra verification processes? Need to replicate with production task.
+         \item Frampton \& Faulkenberry (2018) (see also Campbell \& Fugelsang, 2001) found that even when the additive model was the best fitting model, there were shifts in problem-solving strategies that occurred with problems in word format -- these may imply that format does affect calculation processes.
+       \end{itemize}
+     \end{itemize}
+
+}
+
+
+\headerbox{References}{name=references, span=1, column=2, below=discussion, above=bottom}{
+  \begin{itemize} \compresslist \footnotesize
+  \item Ashcraft, M. H. (1992). Cognitive arithmetic: A review of data and theory. {\it Cognition, 44}(1-2), 75-106. https://doi.org/10.1016/0010-0277(92)90051-1
+  \item Campbell, J. I., \& Fugelsang, J. (2001). Strategy choice for arithmetic verification: Effects of numerical surface form. {\it Cognition, 80}(3), B21–B30. https://doi.org/10.1016/s0010-0277(01)00115-9
+    \item Dehaene, S., \& Cohen, L. (1995). Towards an anatomical and functional model of number processing. {\it Mathematical Cognition, 1}, 83-120.
+     \item Faulkenberry, T. J., Ly, A., \& Wagenmakers, E. J. (2020). Bayesian inference in numerical cognition: A tutorial using JASP. {\it Journal of Numerical Cognition, 6}(2), 231–259. https://doi.org./10.5964/jnc.v6i2.288
+     \item Frampton, A. R., \& Faulkenberry, T. J. (2018). Mental arithmetic processes: Testing the independence of encoding and calculation. {\it Journal of Psychological Inquiry, 22}(1), 30-35. 
+     \item Rouder, J. N., Morey, R. D., Speckman, P. L., \& Province, J. M. (2012). Default Bayes factors for ANOVA designs. {\it Journal of Mathematical Psychology, 56}(5), 356-374. https://doi.org/10.1016/j.jmp.2012.08.001
+     \end{itemize} 
+}
+
+
+
+ 
+
+
+\end{poster}
+\end{document}
