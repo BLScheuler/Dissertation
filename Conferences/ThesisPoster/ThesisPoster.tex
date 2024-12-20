@@ -1,0 +1,243 @@
+% ----------------------------------------------------------------------
+% Poster for Bryanna 2022 -- SWPA, Pathways, and more! 
+% ---------------------------------------------------------------------
+
+\documentclass[paperheight=36in,paperwidth=48in,landscape]{baposter}
+\usepackage{amsmath}
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+\usepackage{relsize}  % For \smaller
+\usepackage{url}      % For \url
+\usepackage{tikz}
+\usepackage{xcolor}
+\usetikzlibrary{shapes.misc}
+
+%\usepackage{sansmathfonts}
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
+%%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{figures/}}  % Root directory of the pictures 
+% \tracingstats=2  % Enabled LaTeX logging with conditionals
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bordercol}{RGB}{40,40,40}
+\definecolor{tarletonPurple}{RGB}{79,45,127}
+\definecolor{headerfontcol}{RGB}{0,0,0}
+\definecolor{boxcolor}{RGB}{255,255,255}
+\definecolor{backgroundcolor}{RGB}{229,224,236}
+% background color is computed by extending each RGB component of tarletonPurple
+% toward white (255,255,255) in a proportional manner. This specific choice
+% is 85% of the way toward white.  This way, it is not too dark, but still
+% retains some of the visual appeal of Tarleton purple
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Save space in lists. Use this after the opening of the list
+\newcommand{\compresslist}{
+	\setlength{\itemsep}{0.2pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Document Start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%
+\begin{poster}{
+        headerheight=0.1\textheight,
+	grid=false,
+        columns=3,
+    	eyecatcher=true, 
+	borderColor=bordercol,
+	headerColorOne=tarletonPurple,
+        headershade=plain,
+	headerFontColor=boxcolor,
+	% Only simple background color used, no shading, so boxColorTwo
+        % isn't necessary
+	boxColorOne=boxcolor,
+	headershape=smallrounded,
+	headerfont=\Large\sf\bf,
+	textborder=roundedsmall,
+	background=plain,
+        bgColorOne=backgroundcolor,
+        headerborder=closed,
+        boxshade=plain
+}
+%%% Eye Catcher %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	
+}
+%%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\LARGE\bf
+  Classical Maximum Likelihood Estimation in Shifted-Wald Models of Response Times
+}
+%%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+  { Bryanna L. Scheuler \& Thomas J. Faulkenberry}\\
+  { Department of Psychological Sciences, Tarleton State University}\\
+}
+%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+ \includegraphics[height=0.8\headerheight]{figures/logo.jpg} 
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Background}{name=background,span=1,column=0,row=0}{ 
+
+Response times are a crucial component of understanding and measuring cognitive processes. But, {\color{blue}  how do we know that the parameters we are estimating from a response time distribution are representative of the true population parameters?} One beautiful solution: A parameter recovery study.
+
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{figures/ParameterRecovery.jpg}
+  \end{center}
+
+This study focused on classical maximum likelihood estimation (CMLE), an estimation method that compares the relative likelihoods of parameter probabilities. But what does it mean to compare likelihoods of parameter probabilities?
+
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{figures/ProbVSLike.jpg}
+  \end{center}
+
+CMLE was tested on a specific model of response times, known as the shifted-Wald model. The shifted-Wald model is composed of three parameters: shift, drift rate, and response threshold.
+
+
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{figures/sWaldModel.jpg}
+  \end{center}
+
+By completing a parameter recovery study, we can gauge how well CMLE can estimate these parameters from a shifted-Wald model.
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Method}{name=method, span=1, below=background, above=bottom}{
+
+For this study, we simulated data using the parameters reported by Faulkenberry et al. (2018). This was composed of four main steps:
+
+  \begin{itemize} \compresslist
+  \item Generate 'artificial' people from parent population
+  \item Generate response times for artifical people
+  \item Fit shifted-Wald model to RT distribution with CMLE
+  \item Compare estimates to original parameters
+  \end{itemize}
+
+This process was applied to 5 sub-experiments in a design used by Farrell and Ludwig (2008). These sub-experiments had 5, 20, or 80 participants, with 20, 80, or 500 trials per particpant.
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Experiments}{name=experiments, span=1,column=1, row= 1, above=bottom}{
+
+Experiment 1: Participants = 20, Trials = 20
+ \begin{center}
+    \includegraphics[width=0.57\textwidth]{figures/exp1Cor.jpg}
+  \end{center}
+ \begin{center}
+    \includegraphics[width=0.45\textwidth]{figures/exp1Results.jpg}
+  \end{center}
+
+Experiment 2: Participants = 20, Trials = 80
+ \begin{center}
+    \includegraphics[width=0.57\textwidth]{figures/exp2Cor.jpg}
+  \end{center}
+ \begin{center}
+    \includegraphics[width=0.45\textwidth]{figures/exp2Results.jpg}
+  \end{center}
+
+Experiment 3: Participants = 20, Trials = 500
+ \begin{center}
+    \includegraphics[width=0.57\textwidth]{figures/exp3Cor.jpg}
+  \end{center}
+ \begin{center}
+    \includegraphics[width=0.45\textwidth]{figures/exp3Results.jpg}
+  \end{center}
+
+Experiment 4: Participants = 5, Trials = 500
+ \begin{center}
+    \includegraphics[width=0.57\textwidth]{figures/exp4Cor.jpg}
+  \end{center}
+ \begin{center}
+    \includegraphics[width=0.45\textwidth]{figures/exp4Results.jpg}
+  \end{center}
+
+Experiment 5: Participants = 80, Trials = 20
+ \begin{center}
+    \includegraphics[width=0.57\textwidth]{figures/exp5Cor.jpg}
+  \end{center}
+ \begin{center}
+    \includegraphics[width=0.45\textwidth]{figures/exp5Results.jpg}
+  \end{center}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Drift Rate}{name=driftrate, span=1, column=2}{
+\begin{minipage}{0.5\textwidth}
+The true mean for drift rate was {\color{blue} 3.91}. The estimated means in each experiment were as follows:
+\\Experiment 1 = 4.49 (0.60)
+\\Experiment 2 = 3.97 (0.23)
+\\Experiment 3 = 3.91 (0.17)
+\\Experiment 4 = 3.92 (0.32)
+\\Experiment 5 = 4.52 (0.31)
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+    \includegraphics[width=0.95\textwidth]{figures/driftrate.jpg}
+\end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Response Threshold}{name=responsethreshold, span=1, column=2, below=driftrate}{
+\begin{minipage}{0.5\textwidth}
+The true mean for response threshold was {\color{blue} 0.92}. The estimated means in each experiment were as follows:
+\\Experiment 1 = 1.88 (0.98)
+\\Experiment 2 = 0.95 (0.08)
+\\Experiment 3 = 0.92 (0.04)
+\\Experiment 4 = 0.92 (0.09)
+\\Experiment 5 = 1.89 (0.45)
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+    \includegraphics[width=0.95\textwidth]{figures/responsethreshold.jpg}
+\end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Shift}{name=shift, span=1, column=2, below=responsethreshold}{
+\begin{minipage}{0.5\textwidth}
+The true mean for shift was {\color{blue} 0.32}. The estimated means in each experiment were as follows:
+\\Experiment 1 = 0.27 (0.06)
+\\Experiment 2 = 0.32 (0.01)
+\\Experiment 3 = 0.32 (0.01)
+\\Experiment 4 = 0.32 (0.02)
+\\Experiment 5 = 0.27 (0.03)
+\end{minipage} %
+\begin{minipage}{0.5\textwidth}
+    \includegraphics[width=0.95\textwidth]{figures/shift.jpg}
+\end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\headerbox{Discussion}{name=discussion, span=1, column=2, below=shift, above=bottom}{
+\begin{minipage}{0.5\textwidth}
+There are still many questions left to be answered:
+  \begin{itemize} \compresslist
+  \item How do other tools compare to CMLE in shifted-Wald models?
+  \item Is there a goal trial size when using CMLE for these models?
+  \item How can we use this information about participant versus trial size to make informed decisions?
+  \end{itemize}
+\end{minipage} %
+\begin{minipage}{0.5\textwidth}
+    \includegraphics[width=0.8\textwidth]{figures/qrcode.jpg}
+ \end{minipage}
+
+}
+
+\end{poster}
+\end{document}
